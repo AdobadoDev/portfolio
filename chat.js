@@ -1,7 +1,13 @@
 function toggleChat() {
   const chatWindow = document.getElementById("chatWindow");
+  if (!chatWindow) return;
+  
   if (chatWindow.style.display === "none" || chatWindow.style.display === "") {
     chatWindow.style.display = "flex";
+    const input = document.getElementById("chatInput");
+    if (input) {
+      setTimeout(() => input.focus(), 100);
+    }
   } else {
     chatWindow.style.display = "none";
   }
@@ -15,6 +21,8 @@ function handleChatKeyPress(event) {
 
 function sendChatMessage() {
   const input = document.getElementById("chatInput");
+  if (!input) return;
+  
   const message = input.value.trim();
   if (!message) return;
 
@@ -33,49 +41,8 @@ function sendChatMessage() {
   setTimeout(() => {
     const botMsg = document.createElement("div");
     botMsg.className = "chat-message bot";
-    botMsg.textContent = "Zzz... I'll reply when I wake up! 🛏️";
+    botMsg.textContent = "Hi! Thanks for reaching out. Leave your contact info or email me directly at lanceesquilla@gmail.com! 🚀";
     chatBody.appendChild(botMsg);
     chatBody.scrollTop = chatBody.scrollHeight;
-  }, 1000);
+  }, 800);
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  var profileImg = document.getElementById("profileImg");
-  var root = document.documentElement;
-
-  if (profileImg) {
-    profileImg.addEventListener("mouseenter", function() {
-      profileImg.src = "img/poker_face.png";
-    });
-
-    profileImg.addEventListener("mouseleave", function() {
-      var currentTheme = root.getAttribute("data-theme");
-      if (currentTheme === "dark") {
-        profileImg.src = "img/sleeping_face.png";
-      } else {
-        profileImg.src = "img/img-1.jpeg";
-      }
-    });
-    
-    // Observe theme changes to swap image
-    var observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        if (mutation.attributeName === "data-theme") {
-          var newTheme = root.getAttribute("data-theme");
-          if (newTheme === "dark") {
-            profileImg.src = "img/sleeping_face.png";
-          } else {
-            profileImg.src = "img/img-1.jpeg";
-          }
-        }
-      });
-    });
-    
-    observer.observe(root, { attributes: true });
-    
-    // Initial check
-    if (root.getAttribute("data-theme") === "dark") {
-      profileImg.src = "img/sleeping_face.png";
-    }
-  }
-});

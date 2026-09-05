@@ -98,9 +98,11 @@ a {
   font-size: 13px;
   color: var(--text2);
   margin-bottom: 6px;
+  transition: color 0.15s ease, transform 0.15s ease;
 }
 .back-link:hover {
-  color: var(--text);
+  color: var(--accent);
+  transform: translateX(-3px);
 }
 .page-title {
   font-size: 20px;
@@ -308,29 +310,56 @@ a {
   gap: 8px;
   background: var(--accent-bg);
   color: var(--accent-text);
-  border: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+  opacity: 0.95;
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  background: var(--bg2);
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 9px 18px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   font-family: var(--font);
-  transition: opacity 0.15s;
-}
-.btn-primary:hover {
-  opacity: 0.85;
-}
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 400;
-  cursor: pointer;
+  transition:
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 .btn-ghost:hover {
-  color: var(--text2);
+  background: var(--bg3);
+  border-color: var(--border);
+  transform: translateY(-2px);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.btn-ghost:active {
+  transform: translateY(0);
 }
 
 /* ── MAIN GRID ── */
@@ -363,10 +392,12 @@ a {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-weight: 400;
+  font-weight: 500;
+  transition: color 0.15s ease, transform 0.15s ease;
 }
 .view-all:hover {
-  color: var(--text);
+  color: var(--accent);
+  transform: translateX(3px);
 }
 .section-divider {
   border: none;
@@ -476,10 +507,22 @@ a {
   color: var(--tag-text);
   border: 1px solid var(--border2);
   border-radius: var(--radius-sm);
-  padding: 4px 12px;
+  padding: 5px 12px;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+  cursor: default;
+}
+.tag:hover {
+  transform: translateY(-1px);
+  background: var(--bg3);
+  border-color: var(--border);
+  color: var(--text);
 }
 
 /* ── PROJECTS ── */
@@ -629,15 +672,27 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
   border-bottom: 1px solid var(--border2);
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease,
+    border-color 0.15s ease;
+  cursor: pointer;
 }
-.cert-item:first-child {
-  border-top: 1px solid var(--border2);
+.cert-item:hover {
+  background: var(--bg2);
+  transform: translateX(4px);
+  border-color: transparent;
 }
 .cert-name {
   font-size: 14px;
   font-weight: 500;
+  transition: color 0.15s ease;
+}
+.cert-item:hover .cert-name {
+  color: var(--accent);
 }
 .cert-issuer {
   font-size: 13px;
@@ -647,6 +702,11 @@ a {
 .cert-arrow {
   color: var(--text3);
   font-size: 14px;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.cert-item:hover .cert-arrow {
+  color: var(--accent);
+  transform: translateX(3px);
 }
 
 /* ── RECOMMENDATIONS ── */
@@ -763,17 +823,31 @@ a {
 }
 .gallery-img {
   flex-shrink: 0;
-  width: 200px;
-  height: 150px;
+  width: 190px;
+  height: 90px;
   border-radius: var(--radius);
-  background: var(--bg3);
+  background: var(--bg);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  color: var(--text3);
-  font-family: var(--mono);
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  transition:
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: default;
+}
+.gallery-img:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: var(--bg2);
+  box-shadow: var(--shadow-soft);
 }
 
 /* ── CHAT BUTTON ── */
@@ -785,7 +859,7 @@ a {
   color: var(--accent-text);
   border: none;
   border-radius: 50px;
-  padding: 12px 20px;
+  padding: 12px 22px;
   font-size: 14px;
   font-weight: 500;
   font-family: var(--font);
@@ -794,33 +868,55 @@ a {
   align-items: center;
   gap: 8px;
   box-shadow: var(--shadow-soft);
-  transition: opacity 0.15s;
+  transition:
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+  z-index: 99;
 }
 .chat-btn:hover {
-  opacity: 0.85;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  opacity: 0.98;
+}
+.chat-btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* ── CHAT WINDOW ── */
 .chat-window {
   position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  max-width: calc(100vw - 40px);
+  bottom: 84px;
+  right: 24px;
+  width: 320px;
+  max-width: calc(100vw - 48px);
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
   display: none;
   flex-direction: column;
   overflow: hidden;
   z-index: 100;
+  animation: chatFadeIn 0.2s ease;
+}
+
+@keyframes chatFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .chat-header {
-  background: var(--bg3);
-  padding: 12px 16px;
+  background: var(--bg2);
+  padding: 14px 18px;
   font-weight: 600;
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -830,15 +926,22 @@ a {
 .close-chat {
   background: transparent;
   border: none;
-  color: var(--text);
-  font-size: 20px;
+  color: var(--text2);
+  font-size: 22px;
   cursor: pointer;
   line-height: 1;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.close-chat:hover {
+  color: var(--text);
+  transform: scale(1.15);
 }
 
 .chat-body {
   padding: 16px;
-  height: 300px;
+  height: 280px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -846,15 +949,16 @@ a {
 }
 
 .chat-message {
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-size: 14px;
+  padding: 9px 14px;
+  border-radius: 14px;
+  font-size: 13.5px;
   max-width: 85%;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .chat-message.bot {
   background: var(--bg3);
+  color: var(--text);
   align-self: flex-start;
   border-bottom-left-radius: 4px;
 }
@@ -871,16 +975,24 @@ a {
   border-top: 1px solid var(--border);
   display: flex;
   gap: 8px;
+  background: var(--bg);
 }
 
 .chat-footer input {
   flex: 1;
-  padding: 8px 12px;
+  padding: 9px 14px;
   border: 1px solid var(--border);
   border-radius: 20px;
   background: var(--bg2);
   color: var(--text);
   outline: none;
+  font-size: 13px;
+  font-family: var(--font);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.chat-footer input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .chat-footer button {
@@ -889,8 +1001,18 @@ a {
   border: none;
   border-radius: 20px;
   padding: 0 16px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
+  font-family: var(--font);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.chat-footer button:hover {
+  filter: brightness(1.1);
+  transform: scale(1.03);
+}
+.chat-footer button:active {
+  transform: scale(0.97);
 }
 
 /*responsive*/
