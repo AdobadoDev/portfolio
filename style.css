@@ -8,48 +8,48 @@
 
 :root {
   --bg: #ffffff;
-  --bg2: #f7f7f5;
-  --bg3: #f0efea;
-  --text: #111110;
-  --text2: #6b6b67;
-  --text3: #9b9b96;
-  --border: rgba(0, 0, 0, 0.1);
-  --border2: rgba(0, 0, 0, 0.06);
-  --accent: #111110;
-  --accent-bg: #111110;
+  --bg2: #f8fafc;
+  --bg3: #f1f5f9;
+  --text: #0f172a;
+  --text2: #475569;
+  --text3: #94a3b8;
+  --border: rgba(15, 23, 42, 0.08);
+  --border2: rgba(15, 23, 42, 0.04);
+  --accent: #2563eb;
+  --accent-bg: #0f172a;
   --accent-text: #ffffff;
-  --tag-bg: #efefec;
-  --tag-text: #444440;
-  --surface-strong: #1a1a18;
+  --tag-bg: #f1f5f9;
+  --tag-text: #334155;
+  --surface-strong: #0f172a;
   --surface-strong-muted: rgba(255, 255, 255, 0.4);
   --surface-strong-soft: rgba(255, 255, 255, 0.35);
   --surface-pattern: rgba(255, 255, 255, 0.01);
-  --shadow-soft: 0 18px 40px rgba(17, 17, 16, 0.08);
-  --radius: 10px;
-  --radius-sm: 6px;
-  --font: "DM Sans", sans-serif;
-  --mono: "DM Mono", monospace;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "DM Mono", ui-monospace, monospace;
 }
 
 :root[data-theme="dark"] {
-  --bg: #121412;
-  --bg2: #181c18;
-  --bg3: #232923;
-  --text: #f3f4ef;
-  --text2: #b2b8ae;
-  --text3: #7f877d;
-  --border: rgba(235, 239, 231, 0.14);
-  --border2: rgba(235, 239, 231, 0.08);
-  --accent: #f3f4ef;
-  --accent-bg: #eef1e7;
-  --accent-text: #11140f;
-  --tag-bg: #20251f;
-  --tag-text: #d8ddd2;
-  --surface-strong: #eef1e7;
-  --surface-strong-muted: rgba(17, 20, 15, 0.56);
-  --surface-strong-soft: rgba(17, 20, 15, 0.42);
-  --surface-pattern: rgba(17, 20, 15, 0.04);
-  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.28);
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --bg3: #21262d;
+  --text: #f0f6fc;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --border: rgba(240, 246, 252, 0.12);
+  --border2: rgba(240, 246, 252, 0.07);
+  --accent: #58a6ff;
+  --accent-bg: #388bfd;
+  --accent-text: #ffffff;
+  --tag-bg: #1f242c;
+  --tag-text: #c9d1d9;
+  --surface-strong: #161b22;
+  --surface-strong-muted: rgba(240, 246, 252, 0.5);
+  --surface-strong-soft: rgba(240, 246, 252, 0.3);
+  --surface-pattern: rgba(240, 246, 252, 0.03);
+  --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 body {
@@ -491,39 +491,81 @@ a {
 .project-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 18px 20px;
+  padding: 20px;
   background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
   transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.15s ease;
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 .project-card:hover {
   background: var(--bg2);
-  border-color: var(--border);
-  transform: translateY(-2px);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+.project-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 .project-name {
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.project-card:hover .project-name {
+  color: var(--accent);
+}
+.project-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
   font-weight: 500;
-  margin-bottom: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  white-space: nowrap;
 }
 .project-desc {
   font-size: 13px;
   color: var(--text2);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   line-height: 1.5;
+  flex-grow: 1;
+}
+.project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border2);
 }
 .project-link {
-  display: inline-block;
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  border-radius: 5px;
-  padding: 3px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
-  color: var(--text2);
-  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--accent);
+  transition: gap 0.2s ease;
+}
+.project-card:hover .project-link {
+  gap: 8px;
 }
 
 /* ── EXPERIENCE (SIDEBAR) ── */
